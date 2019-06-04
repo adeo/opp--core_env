@@ -1,0 +1,32 @@
+{
+  "name": "@core/env",
+  "version": "0.3.0",
+  "description": "Module for convert ENV variables into JSON",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:adeo/core_env.git"
+  },
+  "publishConfig": {
+    "registry": "https://adeo.jfrog.io/adeo/api/npm/npm/"
+  },
+  "scripts": {
+    "test": "istanbul cover _mocha -- --recursive --reporter spec --check-leaks --exit",
+    "coverage": "npm test && http-server coverage/lcov-report -o -c-1"
+  },
+  "keywords": [],
+  "author": "llevkin",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "http-server": "^0.11.1",
+    "istanbul": "^1.1.0-alpha.1",
+    "mocha": "^5.2.0",
+    "rewiremock": "^3.13.4",
+    "sinon": "^7.3.0"
+  }
+}

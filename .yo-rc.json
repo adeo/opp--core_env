@@ -1,0 +1,13 @@
+{
+  "generator-lmru-module": {
+    "promptValues": {
+      "name": "@core/env",
+      "description": "Module for convert ENV varables into JSON",
+      "version": "0.0.1",
+      "repository": "git@gitlab.lmru.adeo.com:publication-bricks/opus/npm/core_env.git",
+      "main": "src/index.js",
+      "author": "llevkin",
+      "license": "ISC"
+    }
+  }
+}
