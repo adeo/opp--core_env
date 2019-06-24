@@ -47,7 +47,7 @@ file_buff=(file)/path/to/file
 file_utf8=(file-utf8)/path/to/file
 ```
 Result:
-```json
+```
 {
   string:      'text',
   number:      1,
