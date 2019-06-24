@@ -66,3 +66,36 @@ Result:
   }
 }
 ```
+
+### Quote
+Environment:
+```
+quote1=!(number)1
+quote2=!!(boolean)true
+```
+Result:
+```
+{
+  quote1: "(number)1",
+  quote2: "!(boolean)true"
+}
+```
+
+### Templates
+Environment:
+```
+string_for_replace=string1
+replace1=string2+${string.for.replace}
+replace2=${string.for.replace}/test/${replace1}
+replace_quote=!${replace2}/test
+```
+
+Result:
+```
+{
+  string: { for: { replace: 'string1' } },
+  replace1: 'string2+string1',
+  replace2: 'string1/test/string2+string1',
+  replace: { quote: '${replace2}/test' }
+}
+```
