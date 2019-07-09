@@ -86,9 +86,12 @@ class Env {
 
     [_template](value) {
         let res, result,
-            regExp = /\${([^}{]+)+?}/g;
+            regExp1 = /\${([^}{]+)+?}/g,
+            regExp2 = /\#{([^}{]+)+?}/g;
         result = value;
-        while (res = regExp.exec(value))
+        while (res = regExp1.exec(value))
+            result = result.replace(res[0], _.get(this, res[1]));
+        while (res = regExp2.exec(value))
             result = result.replace(res[0], _.get(this, res[1]));
         return result;
     }
