@@ -69,13 +69,13 @@ const check = RegExp(`^\\(${Object.keys(validation).join('\\)|\\(')}\\)`);
 
 class Env {
 
-    [_validate](value) {
+    [_validate](value, env) {
         let type;
         if (!value)
             return value;
         if (value.startsWith('!'))
             return value.slice(1);
-        value = this[_template](value);
+        value = this[_template](value, env);
         if (!check.test(value))
             return value;
         type = value.match(check)[0];
@@ -84,15 +84,18 @@ class Env {
         return validation[type](value, this);
     }
 
-    [_template](value) {
+    [_template](value, env) {
         let res, result,
             regExp1 = /\${([^}{]+)+?}/g,
             regExp2 = /\#{([^}{]+)+?}/g;
         result = value;
-        while (res = regExp1.exec(value))
-            result = result.replace(res[0], _.get(this, res[1]));
-        while (res = regExp2.exec(value))
-            result = result.replace(res[0], _.get(this, res[1]));
+        for (let regExp of [regExp1, regExp2])
+            while (res = regExp.exec(value)) {
+                if (_.has(this, res[1]))
+                    result = result.replace(res[0], _.get(this, res[1]));
+                else if (_.has(env, res[1]))
+                    result = result.replace(res[0], _.get(env, res[1]));
+            }
         return result;
     }
 
@@ -130,7 +133,7 @@ class Env {
         for (let field in env) {
             if (!field)
                 continue;
-            env[field] = this[_validate](env[field]);
+            env[field] = this[_validate](env[field], env);
             path = field.split('_').join('.');
             _.set(this, path, env[field]);
         }
@@ -139,7 +142,7 @@ class Env {
                 if (Reflect.has(ctx, field, ...args))
                     return Reflect.get(ctx, field, ...args);
                 return Reflect.get(process.env, field, ...args)
-            }
+            },
         });
     }
 
