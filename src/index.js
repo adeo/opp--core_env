@@ -2,6 +2,7 @@ const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
+const { object } = require('@core/tools');
 
 const comments = [';', '#', '//'];
 const separator = '=';
@@ -122,7 +123,7 @@ class Env {
     [_create]() {
         let path,
             env = this[_env]();
-            env = env ? this[_enrich](env) : process.env;
+            env = env ? this[_enrich](env) : object.ksort(process.env);
         for (let field in env) {
             if (!field)
                 continue;
