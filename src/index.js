@@ -129,7 +129,8 @@ class Env {
     [_create]() {
         let path,
             env = this[_env]();
-            env = env ? this[_enrich](env) : object.ksort(process.env);
+            env = env ? this[_enrich](env) : process.env;
+        env = object.ksort(env);
         for (let field in env) {
             if (!field)
                 continue;
