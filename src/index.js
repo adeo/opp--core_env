@@ -127,7 +127,7 @@ class Env {
     }
 
     [_create]() {
-        let path,
+        let path, name,
             env = this[_env]();
             env = env ? this[_enrich](env) : process.env;
         env = object.ksort(env);
@@ -137,6 +137,11 @@ class Env {
             env[field] = this[_validate](env[field], env);
             path = field.split('_').join('.');
             _.set(this, path, env[field]);
+        }
+        try {
+            name = require(`${process.cwd()}/package.json`).name;
+            _.set(this, 'app.name', name);
+        } catch {
         }
         return new Proxy(this, {
             get(ctx, field, ...args) {
