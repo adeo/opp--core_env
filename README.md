@@ -1,14 +1,13 @@
 # @core/env
-This module transform environment variables into JSON hierarchical
-structures. Usage is very simple, just require it in top of you application.
-You can create .env file in root of you application for development and debug.
-Don't do it in production.
 
 #### Why:
 Becouse configuration of node.js application can be very painfull... 
 
 #### What:
-Look up on description.
+This module transform environment variables into JSON hierarchical
+structures. Usage is very simple, just require it in top of you application.
+You can create .env file in root of you application for development and debug but
+don't do it in production.
 
 #### Example
 
