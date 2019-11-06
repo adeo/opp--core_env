@@ -18,7 +18,7 @@
   "author": "llevkin",
   "license": "ISC",
   "dependencies": {
-    "@core/tools": "^0.4.0",
+    "@core/tools": "adeo/npm_core_tools",
     "lodash": "^4.17.11"
   },
   "devDependencies": {
