@@ -16,7 +16,7 @@
   },
   "keywords": [],
   "author": "llevkin",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@core/tools": "adeo/npm_core_tools",
     "lodash": "^4.17.11"
