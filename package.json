@@ -18,7 +18,7 @@
   "author": "llevkin",
   "license": "MIT",
   "dependencies": {
-    "@core/tools": "adeo/npm_core_tools",
+    "@core/tools": "adeo/opp--core_tools",
     "lodash": "^4.17.11"
   },
   "devDependencies": {
