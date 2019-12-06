@@ -1,7 +1,7 @@
 # @core/env
 
 #### Why:
-Becouse configuration of node.js application can be very painfull... 
+Because configuration of node.js application can be very painfull... 
 
 #### What:
 This module transform environment variables into JSON hierarchical
